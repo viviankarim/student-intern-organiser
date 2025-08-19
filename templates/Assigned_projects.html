@@ -239,6 +239,7 @@ block content %} {% macro studentKanbanCard(classes,student) -%}
 
   function createSummaryChart(initialData) {
     const ctx = document.getElementById("summaryChart").getContext("2d");
+    yMax = Math.max(...initialData) + 2; // Set y-axis max to highest count + 2
     summaryChart = new Chart(ctx, {
       type: "bar",
       data: {
@@ -261,6 +262,7 @@ block content %} {% macro studentKanbanCard(classes,student) -%}
         scales: {
           y: {
             beginAtZero: true,
+            max: yMax,
             ticks: {
               stepSize: 2,
               precision: 0,
